@@ -2,13 +2,9 @@
 
 Collaborative coding environment that pairs a FastAPI backend with a Vite/React frontend. Users can create or join rooms, edit code together in real time, and request lightweight AI suggestions.
 
-## Deployed Demo
+## [Deployed Demo: http://34.180.18.81/](http://34.180.18.81/)
 
-> Public hosting is not yet available. Until then, use the local instructions below to run both services together.
-
-## Demo Video
-
-> <Demo Video Link>
+## [Demo Video: https://youtu.be/cVTZqgDB4O8](https://youtu.be/cVTZqgDB4O8)
 
 ## Screenshots
 
