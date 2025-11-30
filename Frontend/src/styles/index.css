@@ -16,6 +16,7 @@ html,
   padding: 0;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -27,6 +28,8 @@ body {
   display: grid;
   grid-template-columns: 320px 1fr;
   height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -117,17 +120,22 @@ body {
   flex-direction: column;
   height: 100%;
   background: #020617;
+  overflow: hidden;
 }
 
 .editor-wrapper {
   flex: 1;
   position: relative;
+  min-height: 0;
+  overflow: auto;
 }
 
 .suggestion-panel {
   border-top: 1px solid rgba(148, 163, 184, 0.2);
   padding: 12px 20px;
   background: rgba(15, 23, 42, 0.6);
+  max-height: 12rem;
+  overflow: auto;
 }
 
 .suggestion-header {
