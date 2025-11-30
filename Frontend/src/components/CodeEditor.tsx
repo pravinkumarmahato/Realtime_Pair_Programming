@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import { pushCodeChange } from '../services/websocket';
 import { useAppDispatch, useAppSelector } from '../hooks/store';
 import type { RootState } from '@/store';
+import { registerCompletions } from '@/lib/registerCompletions';
 import {
   clearSuggestion,
   fetchAutocomplete,
@@ -40,7 +41,7 @@ const CodeEditor = () => {
     monaco.editor.setTheme('vs-dark');
     editor.focus();
 
-    const disposable = editor.onDidChangeCursorPosition(() => {
+    const cursorDisposable = editor.onDidChangeCursorPosition(() => {
       const model = editor.getModel();
       if (!model) {
         return;
@@ -53,7 +54,12 @@ const CodeEditor = () => {
       dispatch(setCursorPosition(offset));
     });
 
-    editor.onDidDispose(() => disposable.dispose());
+    const completionDisposable = registerCompletions(monaco, 'python');
+
+    editor.onDidDispose(() => {
+      cursorDisposable.dispose();
+      completionDisposable?.dispose();
+    });
   };
 
   useEffect(() => {
@@ -85,7 +91,14 @@ const CodeEditor = () => {
           fontLigatures: true,
           scrollbar: { verticalScrollbarSize: 6 },
           theme: 'vs-dark',
-          automaticLayout: true
+          automaticLayout: true,
+          // Basic Monaco Autocomplete Options Added Here
+          quickSuggestions: true,
+          suggestOnTriggerCharacters: true,
+          wordBasedSuggestions: "currentDocument",
+          acceptSuggestionOnEnter: 'on',
+          tabCompletion: 'on',
+          suggestSelection: 'first',
         }}
       />
     </div>
