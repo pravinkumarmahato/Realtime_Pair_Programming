@@ -2,13 +2,14 @@
 
 Collaborative coding environment that pairs a FastAPI backend with a Vite/React frontend. Users can create or join rooms, edit code together in real time, and request lightweight AI suggestions.
 
-## [Deployed Demo: http://34.180.18.81/](http://34.180.18.81/)
+## Deployed Demo: [http://34.180.18.81/](http://34.180.18.81/)
 
-## [Demo Video: https://youtu.be/cVTZqgDB4O8](https://youtu.be/cVTZqgDB4O8)
+## Demo Video: [https://youtu.be/cVTZqgDB4O8](https://youtu.be/cVTZqgDB4O8)
 
 ## Screenshots
 
-> <Screenshots/Images>
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0dbf6658-5257-4449-829f-a52d4f9b313c" />
+
 
 ## High-Level Architecture
 
