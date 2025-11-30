@@ -10,4 +10,4 @@ node_modules
 .dist
 vite.config.timestamp*
 dist
-
+test_realtime.db
