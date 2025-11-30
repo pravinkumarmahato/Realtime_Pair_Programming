@@ -6,10 +6,9 @@ services:
       POSTGRES_DB: realtime_pair
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-    ports:
-      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    mem_limit: 350m
 
   backend:
     build:
@@ -23,9 +22,8 @@ services:
       - db
     ports:
       - "8000:8000"
-    volumes:
-      - ./Backend:/app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    mem_limit: 350m
 
 volumes:
   pgdata:
