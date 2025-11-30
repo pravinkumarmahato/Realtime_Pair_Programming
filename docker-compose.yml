@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: pair_db
+    environment:
+      POSTGRES_DB: realtime_pair
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: pair_backend
+    environment:
+      PAIR_DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/realtime_pair
+      PAIR_FRONTEND_ORIGIN: http://localhost:5173
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./Backend:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+volumes:
+  pgdata:
